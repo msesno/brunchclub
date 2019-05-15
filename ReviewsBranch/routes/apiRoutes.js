@@ -68,14 +68,4 @@ module.exports = function(app) {
     });
   });
 
-//===============================
-//Update User by id
-  app.post("/api/register", function(req,res){
-    db.Register.create(
-      req.body
-    ).then(function(){
-      res.sendStatus(200);
-      });
-  });
-
-}
+};

@@ -1,25 +1,17 @@
-// Requiring necessary npm packages
+require("dotenv").config();
 var express = require("express");
-var session = require("express-session");
 var exphbs = require("express-handlebars");
 
-// Requiring passport as we've configured it
-var passport = require("./config/passport");
-
-// Setting up port and requiring models for syncing
-var PORT = process.env.PORT || 8080;
 var db = require("./models");
+var moment = require('moment');
 
-// Creating express app and configuring middleware needed for authentication
 var app = express();
-app.use(express.urlencoded({ extended: true }));
+var PORT = process.env.PORT || 3000;
+
+// Middleware
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
-
-// We need to use sessions to keep track of our user's login status
-app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Handlebars
 app.engine(
@@ -30,11 +22,7 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-// Requiring our routes
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
-require("./routes/restaurant-api-routes.js")(app);
-require("./routes/post-api-routes.js")(app);
+// Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
@@ -45,10 +33,15 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-// Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
+// Starting the server, syncing our models ------------------------------------/
+db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
-    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+    console.log(
+      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+      PORT,
+      PORT
+    );
   });
 });
 
+module.exports = app;

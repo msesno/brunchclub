@@ -13,4 +13,3 @@ CREATE TABLE events
     food_type VARCHAR(255) NOT NULL,
 	PRIMARY KEY (id)
 );
-

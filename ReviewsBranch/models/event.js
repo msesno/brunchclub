@@ -10,12 +10,6 @@ module.exports = function(sequelize, DataTypes) {
     food_type: DataTypes.STRING,
   });
 
-  Event.associate= function(models){
-    Event.hasMany(models.Register, {
-      onDelete: "cascade"
-    });
-  };
-
   return Event;
   
 };

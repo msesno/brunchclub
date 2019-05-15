@@ -11,6 +11,16 @@ var API = {
             }
         }
       });
+    },
+    registerUser: function(details){
+      return $.ajax({
+        url: "/api/register", 
+        type:"POST",
+        data: details,
+        success: function(response){
+          console.log(response)
+        }
+      })
     }
 };
 
@@ -26,3 +36,21 @@ $(".delete").click(function() {
   });
 });
 
+
+$(".register-user").click(function(event) {
+  event.preventDefault();
+  var eventsDetails={
+    name:$("#validationRegister-name").val().trim(),
+    email:$("#validationRegister-email").val().trim(),
+    EventId:$(this).attr("data-id")
+  }
+ 
+  API.registerUser(eventsDetails).then(function() {
+    window.location.href = "/events/" + eventsDetails.EventId
+  });
+
+  $("#exampleModal").modal("hide")
+  if (!(eventsDetails.name && eventsDetails.email)){
+    alert("You must enter your name and email to register")
+  }
+});

@@ -29,20 +29,9 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(results) {
-      db.Register.findAll({
-        where:{
-          EventId: req.params.id
-        }
-      }).then(function(participants){
-        res.render("oneEvent", {
-          Event: results,
-          Register: participants
-          });
-          
-      })
-      // res.render("oneEvent", {
-      // Event: results
-      // });
+      res.render("oneEvent", {
+      Event: results
+      });
     });
   });
 
