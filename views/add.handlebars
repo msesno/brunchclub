@@ -52,28 +52,7 @@
 
         </form>
 
-        <h3>Upcoming Events:</h3>
-        <hr>
 
-        <ul id="event-list" class="list-group">
-
-          {{#each Event limit="3"}}
-            {{!-- {{#if this.id}} --}}
-
-              <li data-id="{{id}}" class="list-group-item">
-
-                <ul><a href="events/{{id}}"> {{venue}} </a></ul>
-                <ul>Theme: {{theme}}</ul>
-
-            <button class="btn btn-danger float-right delete" data-id={{id}}>ｘ</button>
-
-              </li>   
-
-            {{!-- {{/if}} --}}
-
-          {{/each}}
-
-        </ul>
       </div>
     </div>
   </div>
