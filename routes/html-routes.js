@@ -8,13 +8,6 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function(app) {
 
   app.get("/", function(req, res) {
-<<<<<<< HEAD
-    // If the user already has an account send them to the login page
-    // if (req.user) {
-    //   res.redirect("/login");
-    // }
-=======
->>>>>>> 899b8ad94826e5227ee96a5f4120202af6915bd4
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
@@ -28,13 +21,8 @@ module.exports = function(app) {
 
   app.get("/login", function(req, res) {
     // If the user already has an account send them to the login page
-<<<<<<< HEAD
-    if (req.user) {
-      res.redirect("/blog");
-    }
-=======
->>>>>>> 899b8ad94826e5227ee96a5f4120202af6915bd4
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.redirect("/blog");
+    // res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
   // Here we've add our isAuthenticated middleware to this route.
@@ -43,9 +31,22 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/blog.html"));
   });
 
+  // Each of the below routes just handles the HTML page that the user gets sent to.
+
+  // index route loads view.html
+  // app.get("/", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/blog.html"));
+  // });
+
+
   // cms route loads cms.html
   app.get("/cms", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/cms.html"));
+  });
+
+  // blog route loads blog.html
+  app.get("/blog", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/blog.html"));
   });
 
   // restaurants route loads restaurant-manager.html
@@ -63,17 +64,11 @@ module.exports = function(app) {
 //     });
 //   });
 // });
-<<<<<<< HEAD
-
-// //===============================
-// //Load One Event by ID
-=======
 
 
 
 //===============================
 //Load One Event by ID
->>>>>>> 899b8ad94826e5227ee96a5f4120202af6915bd4
 // app.get("/events/:id", function(req, res) {
 //   db.Event.findOne({
 //     where: {
@@ -86,13 +81,8 @@ module.exports = function(app) {
 //   });
 // });
 
-<<<<<<< HEAD
-// //===============================
-// //Add New Event
-=======
 //===============================
 //Add New Event
->>>>>>> 899b8ad94826e5227ee96a5f4120202af6915bd4
 // app.get("/newevent", function(req,res) {
 //   db.Event.findAll({
 //     limit: 3
@@ -108,6 +98,7 @@ module.exports = function(app) {
 // app.get("*", function(req, res) {
 //   res.render("404");
 // });
+
 
 
 };
