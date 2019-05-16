@@ -8,26 +8,32 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function(app) {
 
   app.get("/", function(req, res) {
+<<<<<<< HEAD
     // If the user already has an account send them to the login page
     // if (req.user) {
     //   res.redirect("/login");
     // }
+=======
+>>>>>>> 899b8ad94826e5227ee96a5f4120202af6915bd4
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
   app.get("/signup", function(req, res) {
     // If the user already has an account send them to the login page
     if (req.user) {
-      res.redirect("/signup");
+      res.redirect("/login");
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   app.get("/login", function(req, res) {
     // If the user already has an account send them to the login page
+<<<<<<< HEAD
     if (req.user) {
       res.redirect("/blog");
     }
+=======
+>>>>>>> 899b8ad94826e5227ee96a5f4120202af6915bd4
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
@@ -57,9 +63,17 @@ module.exports = function(app) {
 //     });
 //   });
 // });
+<<<<<<< HEAD
 
 // //===============================
 // //Load One Event by ID
+=======
+
+
+
+//===============================
+//Load One Event by ID
+>>>>>>> 899b8ad94826e5227ee96a5f4120202af6915bd4
 // app.get("/events/:id", function(req, res) {
 //   db.Event.findOne({
 //     where: {
@@ -72,8 +86,13 @@ module.exports = function(app) {
 //   });
 // });
 
+<<<<<<< HEAD
 // //===============================
 // //Add New Event
+=======
+//===============================
+//Add New Event
+>>>>>>> 899b8ad94826e5227ee96a5f4120202af6915bd4
 // app.get("/newevent", function(req,res) {
 //   db.Event.findAll({
 //     limit: 3

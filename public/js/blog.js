@@ -1,6 +1,14 @@
 $(document).ready(function() {
 
+<<<<<<< HEAD
  
+=======
+  $.get("/api/user_data").then(function(data) {
+    $(".member-name").text(data.email);
+    sessionStorage.setItem("member-name", data.email);
+
+  });
+>>>>>>> 899b8ad94826e5227ee96a5f4120202af6915bd4
   /* global moment */
 
   $.get("/api/user_data").then(function(data) {
