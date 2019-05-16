@@ -50,11 +50,6 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/cms.html"));
   });
 
-  // blog route loads blog.html
-  app.get("/blog", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
-  });
-
   // restaurants route loads restaurant-manager.html
   app.get("/restaurants", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/restaurant-manager.html"));
