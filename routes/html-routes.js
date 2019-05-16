@@ -8,26 +8,19 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function(app) {
 
   app.get("/", function(req, res) {
-    // If the user already has an account send them to the login page
-    if (req.user) {
-      res.redirect("/login");
-    }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
   app.get("/signup", function(req, res) {
     // If the user already has an account send them to the login page
     if (req.user) {
-      res.redirect("/signup");
+      res.redirect("/login");
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   app.get("/login", function(req, res) {
     // If the user already has an account send them to the login page
-    if (req.user) {
-      res.redirect("/login");
-    }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
@@ -63,41 +56,41 @@ module.exports = function(app) {
 
 //===============================
 //Load ALL Events Page
-app.get("/events", function(req, res) {
-  db.Event.findAll({}).then(function(results) {
-    res.render("events", {
-      Event: results
-    });
-  });
-});
+// app.get("/events", function(req, res) {
+//   db.Event.findAll({}).then(function(results) {
+//     res.render("events", {
+//       Event: results
+//     });
+//   });
+// });
 
 
 
 //===============================
 //Load One Event by ID
-app.get("/events/:id", function(req, res) {
-  db.Event.findOne({
-    where: {
-      id: req.params.id
-    }
-  }).then(function(results) {
-    res.render("oneEvent", {
-    Event: results
-    });
-  });
-});
+// app.get("/events/:id", function(req, res) {
+//   db.Event.findOne({
+//     where: {
+//       id: req.params.id
+//     }
+//   }).then(function(results) {
+//     res.render("oneEvent", {
+//     Event: results
+//     });
+//   });
+// });
 
 //===============================
 //Add New Event
-app.get("/newevent", function(req,res) {
-  db.Event.findAll({
-    limit: 3
-  }).then(function(results) {
-    res.render("add", {
-      Event: results
-    });
-});
-});
+// app.get("/newevent", function(req,res) {
+//   db.Event.findAll({
+//     limit: 3
+//   }).then(function(results) {
+//     res.render("add", {
+//       Event: results
+//     });
+// });
+// });
 
 //===============================
 // Render 404 page for any unmatched routes
