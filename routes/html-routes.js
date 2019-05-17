@@ -21,7 +21,7 @@ module.exports = function(app) {
 
   app.get("/login", function(req, res) {
     // If the user already has an account send them to the login page
-    res.redirect("/blog");
+    res.redirect("/login");
     // res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
