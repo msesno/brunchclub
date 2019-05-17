@@ -1,4 +1,9 @@
 $(document).ready(function() {
+  $.get("/api/user_data").then(function(data) {
+    $(".member-name").text(data.email);
+    sessionStorage.setItem("member-name", data.email);
+
+  });
   // Getting references to our form and input
   var signUpForm = $("form.signup");
   var emailInput = $("input#email-input");
