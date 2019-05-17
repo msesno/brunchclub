@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+  $.get("/api/user_data").then(function(data) {
+    $(".member-name").text(data.email);
+    sessionStorage.setItem("member-name", data.email);
+  }); 
+
   if (!sessionStorage.getItem("member-name")){
     window.location.href = "/";
   }
