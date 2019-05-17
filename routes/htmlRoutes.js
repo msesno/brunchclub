@@ -13,14 +13,6 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/", function(req, res) {
-    db.Event.findAll({}).then(function(results) {
-      res.render("events", {
-        Event: results
-      });
-    });
-  });
-
 //===============================
 //Load One Event by ID
   app.get("/events/:id", function(req, res) {

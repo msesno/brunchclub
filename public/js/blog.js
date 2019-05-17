@@ -1,11 +1,11 @@
 $(document).ready(function() {
+ 
+  /* global moment */
 
   $.get("/api/user_data").then(function(data) {
     $(".member-name").text(data.email);
     sessionStorage.setItem("member-name", data.email);
-
-  });
-  /* global moment */
+  }); 
 
   var userEmail = sessionStorage.getItem("member-name");
 
